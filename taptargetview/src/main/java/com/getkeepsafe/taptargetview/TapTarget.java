@@ -69,6 +69,16 @@ public class TapTarget {
   private Integer titleTextColor = null;
   private Integer descriptionTextColor = null;
 
+  int targetRectRadius;
+  int targetRectWidth = 44;
+  int targetRectHeight = 44;
+  SHAPE shape = SHAPE.CIRCLE;
+
+  enum SHAPE {
+    CIRCLE,
+    RECTANGLE
+  }
+
   @DimenRes
   private int titleTextDimen = -1;
   @DimenRes
@@ -82,6 +92,9 @@ public class TapTarget {
   boolean cancelable = true;
   boolean tintTarget = true;
   boolean transparentTarget = false;
+
+  boolean useViewBounds = false;
+
   float descriptionTextAlpha = 0.54f;
 
   /**
@@ -409,6 +422,40 @@ public class TapTarget {
       this.icon.setBounds(new Rect(0, 0, this.icon.getIntrinsicWidth(), this.icon.getIntrinsicHeight()));
     }
 
+    return this;
+  }
+
+  public TapTarget useRectangle(boolean useViewBounds) {
+    this.useViewBounds = useViewBounds;
+    this.shape = SHAPE.RECTANGLE;
+    return this;
+  }
+
+  public TapTarget useRectangle(int targetRectWidth, int targetRectHeight) {
+    this.targetRectWidth = targetRectWidth;
+    this.targetRectHeight = targetRectHeight;
+    return useRectangle(false);
+  }
+
+  public TapTarget useRoundedRectangle(int targetRectRadius, boolean useViewBounds) {
+    this.targetRectRadius = targetRectRadius;
+    return useRectangle(useViewBounds);
+  }
+
+  public TapTarget useRoundedRectangle(int targetRectRadius, int targetRectWidth, int targetRectHeight) {
+    this.targetRectRadius = targetRectRadius;
+    return useRectangle(targetRectWidth, targetRectHeight);
+  }
+
+  public TapTarget useCircle(boolean useViewBounds) {
+    this.useViewBounds = useViewBounds;
+    this.shape = SHAPE.CIRCLE;
+    return this;
+  }
+
+  public TapTarget useCircle(int targetRadius) {
+    this.shape = SHAPE.CIRCLE;
+    this.targetRadius = targetRadius;
     return this;
   }
 
