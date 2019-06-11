@@ -478,6 +478,12 @@ public class TapTarget {
     return this;
   }
 
+  /** Specify use the target view's bounds instead of target radius **/
+  public TapTarget useViewBounds(boolean useViewBounds) {
+    this.useViewBounds = useViewBounds;
+    return this;
+  }
+
   /** Return the id associated with this tap target **/
   public int id() {
     return id;
