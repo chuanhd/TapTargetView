@@ -17,9 +17,12 @@ android {
 }
 
 dependencies {
-    api "androidx.annotation:annotation:$defAndroidXVersion"
-    api "androidx.appcompat:appcompat:$defAndroidXVersion"
-    implementation "androidx.core:core:$defAndroidXVersion"
+//    api "androidx.annotation:annotation:$defAndroidXVersion"
+//    api "androidx.appcompat:appcompat:$defAndroidXVersion"
+//    implementation "androidx.core:core:$defAndroidXVersion"
+    api "com.android.support:support-annotations:$defSupportLibraryVersion"
+    api "com.android.support:appcompat-v7:$defSupportLibraryVersion"
+    implementation "com.android.support:support-compat:$defSupportLibraryVersion"
 }
 
 install {
